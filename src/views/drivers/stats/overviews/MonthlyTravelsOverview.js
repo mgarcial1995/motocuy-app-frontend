@@ -1,4 +1,5 @@
 import ReactApexcharts from 'src/@core/components/react-apexcharts'
+
 //** react imports */
 import { useEffect, useState, useContext } from 'react';
 import { FilterContext } from 'src/pages/drivers';
@@ -67,7 +68,8 @@ const MonthlyTravelsOverview = () => {
                 data[11] = dataPerMonth[index].COUNT;
             }
         }
-        return data
+        
+return data
     }
 
     // ** Hook

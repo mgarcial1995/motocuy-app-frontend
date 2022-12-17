@@ -22,6 +22,7 @@ import { useEffect, useContext } from 'react'
 
 const navigation = () => {
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { userLogged, setUserLogged } = useContext(userLoggedContext)
 
   const verticalRoutes = [

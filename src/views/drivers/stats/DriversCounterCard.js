@@ -1,5 +1,6 @@
 //** react imports */
 import { useEffect, useState, useContext } from 'react';
+
 // ** MUI Imports
 import { FilterContext } from 'src/pages/drivers';
 import Card from '@mui/material/Card'
@@ -32,7 +33,8 @@ const DriversCounterCard = () => {
       })
 
   }, [departmentSelected, provinceSelected, districtSelected])
-  return (
+  
+return (
     <Card>
       <CardContent
         sx={{

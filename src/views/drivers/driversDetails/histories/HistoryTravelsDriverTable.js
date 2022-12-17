@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
+
 //import context
 import { FilterContext } from 'src/pages/drivers';
 
@@ -52,7 +53,8 @@ function descendingComparator(a, b, orderBy) {
     if (b[orderBy] > a[orderBy]) {
         return 1;
     }
-    return 0;
+    
+return 0;
 }
 
 function getComparator(order, orderBy) {
@@ -70,9 +72,11 @@ function stableSort(array, comparator) {
         if (order !== 0) {
             return order;
         }
-        return a[1] - b[1];
+        
+return a[1] - b[1];
     });
-    return stabilizedThis.map((el) => el[0]);
+    
+return stabilizedThis.map((el) => el[0]);
 }
 
 const headCells = [
@@ -106,6 +110,7 @@ function EnhancedTableHead(props) {
 
     const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
         props;
+
     const createSortHandler = (property) => (event) => {
         onRequestSort(event, property);
     };
@@ -218,7 +223,8 @@ export default function HistoryTravelsDriverTable(props) {
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((travel, index) => {
                                     const labelId = `enhanced-table-checkbox-${index}`;
-                                    return (
+                                    
+return (
                                         <TableRow
                                             hover
                                             tabIndex={-1}

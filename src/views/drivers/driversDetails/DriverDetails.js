@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
+
 //import context
 import { FilterContext } from 'src/pages/drivers';
 
@@ -72,7 +73,8 @@ const DriverDetails = (props) => {
         boxShadow: 24,
         p: 6,
     };
-    return (
+    
+return (
 
     <Modal
         open={open}

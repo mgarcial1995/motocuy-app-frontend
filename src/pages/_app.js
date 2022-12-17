@@ -44,6 +44,7 @@ if (themeConfig.routingLoader) {
     NProgress.done()
   })
 }
+
 export const userLoggedContext = React.createContext({}); //user context
 
 // ** Configure JSS & ClassName

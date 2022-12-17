@@ -50,6 +50,7 @@ const TabName = styled('span')(({ theme }) => ({
 const Histories = (props) => {
     const { travels } = props;
     console.log(travels)
+
     // ** State
     const [value, setValue] = useState('general-info')
 

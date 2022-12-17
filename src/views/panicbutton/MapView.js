@@ -1,73 +1,56 @@
-
 import MapContainer from 'src/@core/components/react-leaflet/map-container'
-import TileLayer from 'src/@core/components/react-leaflet/tile-layer';
-import Polygon from 'src/@core/components/react-leaflet/polygon';
-import Tooltip from 'src/@core/components/react-leaflet/tooltip';
-import LayerGroup from 'src/@core/components/react-leaflet/layer-group';
-import Circle from 'src/@core/components/react-leaflet/circle';
+import TileLayer from 'src/@core/components/react-leaflet/tile-layer'
+import Polygon from 'src/@core/components/react-leaflet/polygon'
+import Tooltip from 'src/@core/components/react-leaflet/tooltip'
+import LayerGroup from 'src/@core/components/react-leaflet/layer-group'
+import Circle from 'src/@core/components/react-leaflet/circle'
 
-import { districtsData } from '../../../districts';
-import { departmentsData } from '../../../departments';
-import { provinciesData } from '../../../provincies';
+import { districtsData } from '../../../districts'
+import { departmentsData } from '../../../departments'
+import { provinciesData } from '../../../provincies'
 
-import "leaflet/dist/leaflet.css";
-import { useEffect, useState, useCallback } from 'react';
+import 'leaflet/dist/leaflet.css'
+import { useEffect, useState, useCallback } from 'react'
 
 const MapView = () => {
-  
-    
-    const [center, setCenter] = useState([-12.1895205, -76.9799053]);
+  const [center, setCenter] = useState([-12.1895205, -76.9799053])
 
+  const [panicEvents, setPanicEvents] = useState([])
 
+  useEffect(() => {
+    fetch('http://localhost:3000/api/panicEvent/getPanicEvent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(res => {
+        return res.json()
+      })
+      .then(response => {
+        setPanicEvents(response)
+      })
+  }, [])
 
-    const [panicEvents, setPanicEvents] = useState([]);
+  console.log(center)
 
-    useEffect(() => {
-        fetch('http://localhost:3000/api/panicEvent/getPanicEvent', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },    
-        })
-          .then(res => {
-            return res.json();
-          })
-          .then(response => {
-            setPanicEvents(response)
-          })
-    
-      }, [])
+  const formatCoordinates = coordinates => {
+    return [coordinates.split(':')[0], coordinates.split(':')[1]]
+  }
 
-    console.log(center)
-    const formatCoordinates = (coordinates) => {
+  const fillRedOptions = { color: 'red' }
 
-        return [coordinates.split(':')[0], coordinates.split(':')[1] ];
-    }
+  return (
+    <>
+      <MapContainer center={center} zoom={16} style={{ width: '100vm', height: '100vh' }}>
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+        />
+        {panicEvents.map((event, index) => {
+          return <Circle key={index} center={formatCoordinates(event.location)} pathOptions={fillRedOptions} radius={50} />
+        })}
 
-   
-
-
-    const fillRedOptions = { color: 'red' }
-    return (
-      <>
-        <MapContainer
-                center={center}
-                zoom={16}
-                style={{ width: '100vm', height: '100vh' }}
-            >
-                <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            /> 
-            {
-              panicEvents.map((event) => {
-                return (
-                    <Circle center={formatCoordinates(event.location)} pathOptions={fillRedOptions} radius={50} />  
-                )
-            }) 
-            }
-
-
-            {/* <Circle center={center} pathOptions={fillRedOptions} radius={50} />   */}
-            {/* {
+        {/* <Circle center={center} pathOptions={fillRedOptions} radius={50} />   */}
+        {/* {
                 districtsData.features.map((state) => {
                     const coordinates = state.geometry.coordinates[0].map((item) => [item[1], item[0]]);
                     return (
@@ -87,11 +70,16 @@ const MapView = () => {
                     )
                 })
             }             */}
-            </MapContainer>
-            <button onClick={(()=>{setCenter([-10.1895205,-76.9799053])})}>Click me </button>
-            </>
-    )
+      </MapContainer>
+      <button
+        onClick={() => {
+          setCenter([-10.1895205, -76.9799053])
+        }}
+      >
+        Click me{' '}
+      </button>
+    </>
+  )
 }
 
 export default MapView
-

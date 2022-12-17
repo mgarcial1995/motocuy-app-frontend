@@ -38,6 +38,7 @@ const ResumenMap = () => {
   }, [])
 
   console.log(center)
+
   const formatCoordinates = (coordinates) => {
 
     return [coordinates.split(':')[0], coordinates.split(':')[1]];
@@ -51,7 +52,8 @@ const ResumenMap = () => {
   const onEachDistrict = (district , layer) => {
     layer.bindPopup(district.properties.NOMBDIST);
   }
-  return (
+  
+return (
     <div>
       <MapContainer style={{ width: '100vm', height: '100vh' }} zoom={2} center={center}>
         <GeoJSON 

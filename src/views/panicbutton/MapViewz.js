@@ -32,7 +32,8 @@ const DisplayPosition = ({map}) => {
 
   useEffect(() => {
     map.on('move', onMove)
-    return () => {
+    
+return () => {
       map.off('move', onMove)
     }
   }, [map, onMove])

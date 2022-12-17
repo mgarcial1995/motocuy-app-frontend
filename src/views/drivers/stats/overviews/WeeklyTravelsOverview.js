@@ -1,4 +1,5 @@
 import ReactApexcharts from 'src/@core/components/react-apexcharts'
+
 //** react imports */
 import { useEffect, useState, useContext } from 'react';
 import { FilterContext } from 'src/pages/drivers';
@@ -53,7 +54,8 @@ const WeeklyTravelsOverview = () => {
                 data[6] = dataPerDay[index].COUNT;
             }
         }
-        return data
+        
+return data
     }
 
     // ** Hook

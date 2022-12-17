@@ -38,6 +38,7 @@ CustomDocument.getInitialProps = async ctx => {
   const { extractCriticalToChunks } = createEmotionServer(cache)
   ctx.renderPage = () =>
     originalRenderPage({
+      // eslint-disable-next-line react/display-name
       enhanceApp: App => props =>
         (
           <App

@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback, useContext } from 'react';
 import { ProvinceContext } from 'src/pages/resumen';
 
 import { useTheme } from '@mui/material/styles'
+
 const ResumenChart = () => {
 
     const { provinceSelected, setProvinceSelected } = useContext(ProvinceContext);

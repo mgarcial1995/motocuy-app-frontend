@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
+
 //import context
 import { FilterContext } from 'src/pages/drivers';
 
@@ -85,6 +86,7 @@ const DriversTable = () => {
         setDriver(response);
       })
   }
+
   const fetchTravels = (placa) => {
     fetch('http://localhost:3000/api/travels/getTravelsPerDriver', {
       method: 'POST',
@@ -100,6 +102,7 @@ const DriversTable = () => {
         console.log(response);
       })
   }
+
   const fetchPayments = (idDriver) => {
     fetch('http://localhost:3000/api/payments/getPaymentsPerDriver', {
       method: 'POST',
@@ -122,6 +125,7 @@ const DriversTable = () => {
 
     setOpen(true);
   }
+
   const handleClose = () => {
     setDriver("");
     setTravelsDriver("");
@@ -143,6 +147,7 @@ const DriversTable = () => {
   };
 
   return (
+
     // ** State
     <Card>
       <TableContainer>

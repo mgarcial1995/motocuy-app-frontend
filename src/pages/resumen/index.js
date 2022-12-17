@@ -1,5 +1,6 @@
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
+
 // ** Styled Component Import
 import ResumenMap from 'src/views/resumen/ResumenMap'
 import PanicEventTable from 'src/views/panicbutton/PanicEventTable'

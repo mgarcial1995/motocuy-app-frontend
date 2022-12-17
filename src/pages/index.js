@@ -202,6 +202,7 @@ const LoginPage = () => {
 LoginPage.getLayout = page => <BlankLayout>{page}</BlankLayout>
 
 export default LoginPage
+
 // // ** MUI Imports
 // import Grid from '@mui/material/Grid'
 

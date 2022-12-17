@@ -174,11 +174,13 @@ const RegisterPage = () => {
     setDistrictSelected(0);
     setDepartmentSelected(event.target.value);    
   }
+
   const handleProvinceSelection = (event) => {
     setNewUser({ ...newUser, province: event.target.value })
     setDistrictSelected(0);
     setProvinceSelected(event.target.value);
   }
+
   const handleDistrictSelection = (event) => {
     setNewUser({ ...newUser, district: event.target.value })
     setDistrictSelected(event.target.value);
