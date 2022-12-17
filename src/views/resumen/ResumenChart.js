@@ -12,7 +12,7 @@ const ResumenChart = () => {
     const [travels, setTravels] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/travels/getTravelsPerDistrict', {
+        fetch('https://motocuy-app-backend-production.up.railway.app/api/travels/getTravelsPerDistrict', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ province: provinceSelected})

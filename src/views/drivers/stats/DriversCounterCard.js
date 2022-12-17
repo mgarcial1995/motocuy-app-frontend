@@ -19,7 +19,7 @@ const DriversCounterCard = () => {
 
   useEffect(() => {
 
-    fetch('http://localhost:3000/api/drivers/getAllDrivers', {
+    fetch('https://motocuy-app-backend-production.up.railway.app/api/drivers/getAllDrivers', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ department: departmentSelected, province: provinceSelected, district: districtSelected})

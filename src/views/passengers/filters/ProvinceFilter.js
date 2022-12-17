@@ -25,7 +25,7 @@ const ProvinceFilter = () => {
             }            
         }
         if (departmentSelected != 0) {
-            fetch('http://localhost:3000/api/provincies/getAllProvincies', {
+            fetch('https://motocuy-app-backend-production.up.railway.app/api/provincies/getAllProvincies', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ department: departmentSelected })

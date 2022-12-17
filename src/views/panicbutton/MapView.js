@@ -18,7 +18,7 @@ const MapView = () => {
   const [panicEvents, setPanicEvents] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/panicEvent/getPanicEvent', {
+    fetch('https://motocuy-app-backend-production.up.railway.app/api/panicEvent/getPanicEvent', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' }
     })

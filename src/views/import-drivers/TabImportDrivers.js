@@ -84,7 +84,7 @@ const TabImportDrivers = () => {
     formData.append('province', userLogged.province);
     formData.append('district', userLogged.district);
 
-    fetch('http://localhost:3000/api/drivers/postDriver', {
+    fetch('https://motocuy-app-backend-production.up.railway.app/api/drivers/postDriver', {
       method: 'POST',
       body: formData
     })

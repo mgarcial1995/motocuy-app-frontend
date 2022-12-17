@@ -87,7 +87,7 @@ const RegisterPage = () => {
       }
     }
 
-    fetch('http://localhost:3000/api/departments/getAllDepartments', {
+    fetch('https://motocuy-app-backend-production.up.railway.app/api/departments/getAllDepartments', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
 
@@ -100,7 +100,7 @@ const RegisterPage = () => {
       })
 
     if (provinceSelected != 0) {
-      fetch('http://localhost:3000/api/districts/getAllDistricts', {
+      fetch('https://motocuy-app-backend-production.up.railway.app/api/districts/getAllDistricts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ province: provinceSelected })
@@ -115,7 +115,7 @@ const RegisterPage = () => {
     }
 
     if (departmentSelected != 0) {
-      fetch('http://localhost:3000/api/provincies/getAllProvincies', {
+      fetch('https://motocuy-app-backend-production.up.railway.app/api/provincies/getAllProvincies', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ department: departmentSelected })
@@ -134,7 +134,7 @@ const RegisterPage = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:3000/api/users/signup', {
+    fetch('https://motocuy-app-backend-production.up.railway.app/api/users/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newUser)

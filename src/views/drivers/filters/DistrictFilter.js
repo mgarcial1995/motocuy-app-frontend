@@ -23,7 +23,7 @@ const DistrictFilter = () => {
             }
         }
         if (provinceSelected != 0) {
-            fetch('http://localhost:3000/api/districts/getAllDistricts', {
+            fetch('https://motocuy-app-backend-production.up.railway.app/api/districts/getAllDistricts', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ province: provinceSelected })

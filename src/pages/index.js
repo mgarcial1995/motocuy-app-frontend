@@ -76,7 +76,7 @@ const LoginPage = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:3000/api/users/login', {
+    fetch('https://motocuy-app-backend-production.up.railway.app/api/users/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user)

@@ -25,7 +25,7 @@ const DepartmentFilter = () => {
                 setDepartmentSelected(token.data.department);
             }
         }
-        fetch('http://localhost:3000/api/departments/getAllDepartments', {
+        fetch('https://motocuy-app-backend-production.up.railway.app/api/departments/getAllDepartments', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
 

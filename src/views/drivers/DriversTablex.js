@@ -56,7 +56,7 @@ const DriversTable = () => {
 
   useEffect(() => {
 
-    fetch('http://localhost:3000/api/drivers/getAllDrivers', {
+    fetch('https://motocuy-app-backend-production.up.railway.app/api/drivers/getAllDrivers', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ department: departmentSelected, province: provinceSelected, district: districtSelected })
@@ -73,7 +73,7 @@ const DriversTable = () => {
   }, [departmentSelected, provinceSelected, districtSelected])
 
   const fetchDriver = (driverId) => {
-    fetch('http://localhost:3000/api/drivers/getDriver', {
+    fetch('https://motocuy-app-backend-production.up.railway.app/api/drivers/getDriver', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ driver: "'" + driverId + "'" }),
@@ -88,7 +88,7 @@ const DriversTable = () => {
   }
 
   const fetchTravels = (placa) => {
-    fetch('http://localhost:3000/api/travels/getTravelsPerDriver', {
+    fetch('https://motocuy-app-backend-production.up.railway.app/api/travels/getTravelsPerDriver', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ placa: "'" + placa + "'" }),
@@ -104,7 +104,7 @@ const DriversTable = () => {
   }
 
   const fetchPayments = (idDriver) => {
-    fetch('http://localhost:3000/api/payments/getPaymentsPerDriver', {
+    fetch('https://motocuy-app-backend-production.up.railway.app/api/payments/getPaymentsPerDriver', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id_firebase: "'" + idDriver + "'" }),
