@@ -10,24 +10,82 @@ import CardContent from '@mui/material/CardContent'
 
 // ** Icons Imports
 import DotsVertical from 'mdi-material-ui/DotsVertical'
+import { FilterContext } from 'src/pages/drivers';
+import { useEffect, useState, useContext } from 'react';
 
 // ** Custom Components Imports
 import ReactApexcharts from 'src/@core/components/react-apexcharts'
 
 const RechargesChart = () => {
+    const { departmentSelected, setDepartmentSelected, provinceSelected, setProvinceSelected, districtSelected, setDistrictSelected } = useContext(FilterContext);
+    const [dataPerMonth, setDataPerMonth] = useState([]);//data per month
+
+
+    useEffect(() => {
+
+        fetch('https://motocuy-app-backend-production.up.railway.app/api/payments/getAllPayments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ department: departmentSelected, province: provinceSelected, district: districtSelected })
+
+        })
+            .then(res => {
+                return res.json();
+            })
+            .then(response => {
+                setDataPerMonth(response)
+            })
+
+    }, [departmentSelected, provinceSelected, districtSelected])
+    console.log(dataPerMonth)
     // ** Hook
     const theme = useTheme()
 
-    const series = [
-        {
-            name: "High - 2013",
-            data: [28, 29, 33, 36, 32, 32, 33]
-        },
-        {
-            name: "Low - 2013",
-            data: [12, 11, 14, 18, 17, 13, 13]
+    const formatData = () => {
+        const data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        for (let index = 0; index < dataPerMonth.length; index++) {
+            if (dataPerMonth[index].DATE === 'January') {
+                data[0] = dataPerMonth[index].COUNT;
+            }
+            if (dataPerMonth[index].DATE === 'February') {
+                data[1] = dataPerMonth[index].COUNT;
+            }
+            if (dataPerMonth[index].DATE === 'March') {
+                data[2] = dataPerMonth[index].COUNT;
+            }
+            if (dataPerMonth[index].DATE === 'April') {
+                data[3] = dataPerMonth[index].COUNT;
+            }
+            if (dataPerMonth[index].DATE === 'May') {
+                data[4] = dataPerMonth[index].COUNT;
+            }
+            if (dataPerMonth[index].DATE === 'June') {
+                data[5] = dataPerMonth[index].COUNT;
+            }
+            if (dataPerMonth[index].DATE === 'July') {
+                data[6] = dataPerMonth[index].COUNT;
+            }
+            if (dataPerMonth[index].DATE === 'August') {
+                data[7] = dataPerMonth[index].COUNT;
+            }
+            if (dataPerMonth[index].DATE === 'September') {
+                data[8] = dataPerMonth[index].COUNT;
+            }
+            if (dataPerMonth[index].DATE === 'October') {
+                data[9] = dataPerMonth[index].COUNT;
+            }
+            if (dataPerMonth[index].DATE === 'November') {
+                data[10] = dataPerMonth[index].COUNT;
+            }
+            if (dataPerMonth[index].DATE === 'December') {
+                data[11] = dataPerMonth[index].COUNT;
+            }
         }
-    ]
+
+        return data
+    }
+
+    const dummyData = [28, 29, 33, 36, 32, 32, 33, 34, 39, 36, 32, 32]
 
     const options = {
         chart: {
@@ -53,7 +111,7 @@ const RechargesChart = () => {
             curve: 'smooth'
         },
         title: {
-            text: 'Average High & Low Temperature',
+            text: 'Recargas a lo largo del año',
             align: 'left'
         },
         grid: {
@@ -67,25 +125,25 @@ const RechargesChart = () => {
             size: 1
         },
         xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+            categories: ['En', 'Fb', 'Mr', 'Ab', 'My', 'Jn', 'Jy', 'Ag', 'Sp', 'Oc', 'Nv', 'Dc'],
             title: {
-              text: 'Month'
+                text: 'Meses'
             }
-          },
-          yaxis: {
+        },
+        yaxis: {
             title: {
-              text: 'Temperature'
+                text: 'Recargas'
             },
             min: 5,
             max: 40
-          },
-          legend: {
+        },
+        legend: {
             position: 'top',
             horizontalAlign: 'right',
             floating: true,
             offsetY: -25,
             offsetX: -5
-          }        
+        }
     }
 
     return (
@@ -102,7 +160,7 @@ const RechargesChart = () => {
                 }
             />
             <CardContent    >
-                <ReactApexcharts type='line' height={505} options={options} series={series} />
+                <ReactApexcharts type='line' height={505} options={options} series={[{ name: 'Cantidad', data: formatData() /*or dummyData*/ }]} />
             </CardContent>
         </Card>
     )
