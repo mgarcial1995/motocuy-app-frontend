@@ -67,6 +67,8 @@ const RegisterPage = () => {
     showPassword: false
   })
 
+  const [typeUserSelected, setTypeUserSelected] = useState('Municipalidad')
+
   const router = useRouter()
 
 
@@ -76,13 +78,13 @@ const RegisterPage = () => {
   const [districts, setDistricts] = useState([]); //list of districts;
   const [departments, setDepartments] = useState([]); //list of departments
   const [provincies, setProvincies] = useState([]); //list of provincies
-  const [newUser, setNewUser] = useState({ name: "", lastname: "", typeUser: "", sex: "", ruc: "", rzSocial: "" ,email: "", phoneNumber: "", province: "", department: "", district: "", password: "" }); //
+  const [newUser, setNewUser] = useState({ name: "", lastname: "", typeUser: "", sex: "", ruc: "", rzSocial: "", email: "", phoneNumber: "", province: "", department: "", district: "", password: "" }); //
 
   useEffect(() => {
     let token = JSON.parse(localStorage.getItem("userLogged"));
 
-    if(token){
-      if(token.data.typeUser != "Administrador"){
+    if (token) {
+      if (token.data.typeUser != "Administrador") {
         router.push('401')
       }
     }
@@ -172,7 +174,7 @@ const RegisterPage = () => {
     setNewUser({ ...newUser, department: event.target.value })
     setProvinceSelected(0);
     setDistrictSelected(0);
-    setDepartmentSelected(event.target.value);    
+    setDepartmentSelected(event.target.value);
   }
 
   const handleProvinceSelection = (event) => {
@@ -185,7 +187,7 @@ const RegisterPage = () => {
     setNewUser({ ...newUser, district: event.target.value })
     setDistrictSelected(event.target.value);
   }
- 
+
   return (
     <Box className='content-center'>
       <Card sx={{ zIndex: 1 }}>
@@ -217,13 +219,15 @@ const RegisterPage = () => {
             <Grid container spacing={4}>
               <Grid item xs={12}>
                 <FormControl>
-                  <RadioGroup row defaultValue='Municipalidad' value={newUser.typeUser} onChange={(e) => setNewUser({ ...newUser, typeUser: e.target.value })} className="login-form-email" aria-label='type-user' name='type-user-radio'>
+                  <RadioGroup row defaultValue='Municipalidad' onChange={(e) => { setNewUser({ ...newUser, typeUser: e.target.value }); setTypeUserSelected(e.target.value) }} className="login-form-email" aria-label='type-user' name='type-user-radio'>
                     <FormControlLabel value='Municipalidad' label='Soy Municipalidad' control={<Radio />} />
-                    {/* <FormControlLabel disabled={true} value='Empresa' label='Soy Empresa' control={<Radio />} /> */}
+                    <FormControlLabel disabled value='Empresa' label='Soy Empresa' control={<Radio />} />
                   </RadioGroup>
                 </FormControl>
               </Grid>
-              <Grid item xs={6}>
+              {
+                typeUserSelected != 'Municipalidad' ? <>
+                <Grid item xs={6}>
                 <TextField autoFocus fullWidth value={newUser.rzSocial} onChange={(e) => setNewUser({ ...newUser, rzSocial: e.target.value })} id='rz-social' label='Razón social' />
               </Grid>
               <Grid item xs={6}>
@@ -231,7 +235,9 @@ const RegisterPage = () => {
               </Grid>
               <Grid item xs={12} >
                 <Divider sx={{ marginBottom: 0 }} />
-              </Grid>
+              </Grid> </>: ""
+              }
+
               <Grid item xs={12}>
                 <Typography variant='h7' sx={{ fontWeight: 600 }}>
                   Datos de la cuenta

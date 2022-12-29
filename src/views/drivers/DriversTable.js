@@ -303,7 +303,7 @@ export default function EnhancedTable() {
                     <TableRow
                       hover
                       tabIndex={-1}
-                      key={driver.fullname}
+                      key={driver.id_firebase}
                     >
 
                       <TableCell
