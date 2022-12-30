@@ -58,9 +58,9 @@ const Drivers = () => {
                         <DriversTable />
                     </Grid>
                     <Grid container item xs={3.5} spacing={5}  >
-                        <Grid item xs={12} >
+                        {/* <Grid item xs={12} >
                             <MotoTypeChart />
-                        </Grid>
+                        </Grid> */}
                         <Grid item xs={12} >
                             <WeeklyOverview />
                         </Grid>

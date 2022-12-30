@@ -139,7 +139,7 @@ const TabImportDrivers = () => {
                     Descarga la plantilla de datos
                   </Typography>
                   <Typography variant='body2' sx={{ marginTop: 5 }}>
-                    <Link passHref href='https://www.google.com/search?q=excel+tablas+dinamicas&sxsrf=ALiCzsbK64HWl_j852uyPJZd8D89sVOxUw:1664006633248&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjX-Jzi-6z6AhUDFLkGHWWmCaoQ_AUoAnoECAIQBA&biw=1536&bih=722&dpr=1.25#imgrc=S0bXbyMlNKuKpM'>
+                    <Link passHref target="_blank" href='https://res.cloudinary.com/duyuwfrhc/image/upload/v1672417472/excel_template_krayhn.png'>
                       <LinkStyled>aquí</LinkStyled>
                     </Link>
                   </Typography>
